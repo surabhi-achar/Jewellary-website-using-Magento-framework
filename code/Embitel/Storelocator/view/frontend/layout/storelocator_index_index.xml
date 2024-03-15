@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"  >
+    <body>
+      <!-- <referenceContainer name="content">
+    <block class="Embitel\Storelocator\Block\Banner" name="your_banner" template="Embitel_Storelocator::banner.phtml" />
+</referenceContainer> -->
+        <referenceContainer name="content">
+            <block class="Embitel\Storelocator\Block\Showdata" name="showdata"
+                   template="Embitel_Storelocator::store.phtml" cacheable="false"/>
+        </referenceContainer>
+               
+    </body>
+</page>
+
+

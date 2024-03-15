@@ -1,0 +1,14 @@
+{
+    "sales_order_item": {
+        "column": {
+            "mrp": true,
+            "barcodenumber": true
+        }
+    },
+    "sales_invoice_item": {
+        "column": {
+            "mrp": true,
+            "barcodenumber": true
+        }
+    }
+}

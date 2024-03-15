@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Embitel_Storelocator::storelocator" title="Store Locator" translate="title" module="Embitel_Storelocator" 
+        resource="Embitel_Storelocator::storelocator" action="store/Post"
+        sortOrder="10"/>
+        <add id="Embitel_Storelocator::stores_list" title="Stores" translate="title" module="Embitel_Storelocator" 
+sortOrder="10" parent="Embitel_Storelocator::storelocator" action="store/post" resource="Embitel_Storelocator::stores_list"/>
+    </menu>
+</config>

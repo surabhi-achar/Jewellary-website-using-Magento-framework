@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  
+    
+    
+    <table name="sales_order_item" resource="sales" engine="innodb" comment="Sales Flat Order Item">
+       
+         <column xsi:type="decimal" name="mrp" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="MRP"/>
+                  <column xsi:type="int" name="barcodenumber" unsigned="false" nullable="true"
+                comment="Barcode"/>
+    </table>
+   
+        
+    <table name="sales_invoice_item" resource="sales" engine="innodb" comment="Sales Flat Invoice Item">
+       
+         <column xsi:type="decimal" name="mrp" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="MRP"/>
+                <column xsi:type="int" name="barcodenumber" unsigned="false" nullable="true"
+                comment="Barcode"/>
+        
+        
+    </table>
+   
+     
+ 
+   
+</schema>

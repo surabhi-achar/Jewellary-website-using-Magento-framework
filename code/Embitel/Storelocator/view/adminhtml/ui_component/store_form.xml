@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">store_form.store_form_data_source</item>
+            <item name="deps" xsi:type="string">store_form.store_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Store Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">store_form</item>
+        </item>
+        <item name="spinner" xsi:type="string">general_information</item>
+        <item name="buttons" xsi:type="array">
+           <!-- <item name="save" xsi:type="array">
+                <item name="name" xsi:type="string">save</item>
+                <item name="label" xsi:type="string" translate="true">Save</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/save</item>
+            </item> -->
+              <!-- <item name="save_and_continue" xsi:type="array">
+                <item name="name" xsi:type="string">save_and_continue</item>
+                <item name="label" xsi:type="string" translate="true">Save and Continue Edit</item>
+                <item name="class" xsi:type="string">save</item>
+                <item name="data_attribute" xsi:type="array">
+                    <item name="mage-init" xsi:type="array">
+                        <item name="button" xsi:type="string">{'event': 'saveAndContinueEdit'}</item>
+                    </item>
+                </item> -->
+                 <item name="save" xsi:type="string">Embitel\Storelocator\Block\Adminhtml\Button\Save</item>
+            <item name="back" xsi:type="string">Embitel\Storelocator\Block\Adminhtml\Button\Back</item>
+            <item name="reset" xsi:type="string">Embitel\Storelocator\Block\Adminhtml\Button\Reset</item>
+            <item name="delete" xsi:type="string">Embitel\Storelocator\Block\Adminhtml\Button\Delete</item>
+              <item name="save_and_continue" xsi:type="string">Embitel\Storelocator\Block\Adminhtml\Button\SaveAndContinue</item>
+            <!-- <item name="save" xsi:type="string">Embitel\Storelocator\Block\Adminhtml\Button\Save</item> -->
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <dataSource name="store_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Embitel\Storelocator\Model\Grid\DataProvider</argument>
+            <argument name="name" xsi:type="string">store_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="store/post/save" />
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general_information">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">New Store</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+        </argument>
+        <field name="store_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">store_id</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-alphanum" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>varchar</dataType>
+                <label translate="true">store ID</label>
+                <dataScope>store_id</dataScope>
+            </settings>
+        </field>
+        
+
+        <field name="store_name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">store_name</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <!-- <rule name="letters-only" xsi:type="boolean">true</rule> -->
+                </validation>
+                <dataType>varchar</dataType>
+                <label translate="true">Name</label>
+                <dataScope>store_name</dataScope>
+            </settings>
+        </field>
+                <field name="store_address" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">store_address</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>varchar</dataType>
+                <label translate="true">Address</label>
+                <dataScope>store_address</dataScope>
+            </settings>
+        </field>
+      <field name="store_city">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Embitel\Storelocator\Model\Config\Source\CityOptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">City</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">store_city</item>
+                </item>
+            </argument>
+            <settings>
+             <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+
+       <field name="store_state">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Embitel\Storelocator\Model\Config\Source\StateOptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">State</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">store_state</item>
+                </item>
+            </argument>
+            <settings>
+             <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+
+
+            <field name="store_pincode" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">store_pincode</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>varchar</dataType>
+                <label translate="true">Pincode</label>
+                <dataScope>store_pincode</dataScope>
+            </settings>
+        </field>
+        
+                <field name="mobile_number" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">mobile_number</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                     <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>bigint</dataType>
+                <label translate="true">Mobile Number</label>
+                <dataScope>mobile_number</dataScope>
+            </settings>
+        </field>
+
+
+        <field name="store_location" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">store_location</item>
+                </item>           
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>longtext</dataType>
+                <label translate="true" >Map</label>
+                <dataScope>store_location</dataScope>
+            </settings>
+        </field>
+
+        <field name="latitude" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">latitude</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                     <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>varchar</dataType>
+                <label translate="true">Latitude</label>
+                <dataScope>latitude</dataScope>
+            </settings>
+        </field>
+        <field name="longitude" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">longitude</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                     <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>varchar</dataType>
+                <label translate="true">Longitude</label>
+                <dataScope>longitude</dataScope>
+            </settings>
+        </field>
+
+
+
+        
+<!-- <field name="start_time" formElement="timePicker">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="dataType" xsi:type="string">time</item>
+            <item name="label" xsi:type="string" translate="true">Start Time</item>
+            <item name="formElement" xsi:type="string">timePicker</item>
+            <item name="source" xsi:type="string">your_source</item>
+            <item name="dataScope" xsi:type="string">start_time</item>
+            <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+            <item name="options" xsi:type="array">
+                <item name="timeOnlyTitle" xsi:type="string">Select Time</item>
+                <item name="timeText" xsi:type="string">Time</item>
+                <item name="hourText" xsi:type="string">Hour</item>
+                <item name="minuteText" xsi:type="string">Minute</item>
+                <item name="secondText" xsi:type="string">Second</item>
+                <item name="currentText" xsi:type="string">Now</item>
+                <item name="closeText" xsi:type="string">Done</item>
+            </item>
+            <item name="validation" xsi:type="array">
+                <item name="required-entry" xsi:type="boolean">true</item>
+            </item>
+            <item name="sortOrder" xsi:type="number">10</item>
+        </item>
+    </argument>
+</field> -->
+
+<!-- <field name="store_opening_time"  formElement="TimePicker">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="dataType" xsi:type="string">time</item>
+            <item name="label" xsi:type="string" translate="true">Store Time</item>
+            <item name="required" xsi:type="boolean">true</item>
+            <item name="timeFormat" xsi:type="string">h:mm A</item>
+            <item name="options" xsi:type="array">
+                <item name="showsTime" xsi:type="boolean">true</item>
+                <item name="timeOnly" xsi:type="boolean">true</item>
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <validation>
+            <rule name="required-entry" xsi:type="boolean">true</rule>
+        </validation>
+        <dataType>time</dataType>
+        <label translate="true">Store Time</label>
+        <dataScope>store_opening_time</dataScope>
+    </settings>
+</field> -->
+
+
+    </fieldset>
+</form>
